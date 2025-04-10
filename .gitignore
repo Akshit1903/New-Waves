@@ -39,3 +39,7 @@ build/
 dependency-reduced-pom.xml
 
 .env
+.env.stage.admin
+.env.stage.system
+.env.prod.admin
+.env.prod.system

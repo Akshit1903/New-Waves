@@ -54,6 +54,5 @@ public class App extends Application<AppConfiguration> {
         environment.jersey().register(new NewWavesExceptionMapper());
         TemplateHealthCheck healthCheck = new TemplateHealthCheck("%s");
         environment.healthChecks().register("template", healthCheck);
-        environment.jersey().register(new JsonParseExceptionMapper());
     }
 }
