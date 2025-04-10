@@ -1,0 +1,32 @@
+swagger:
+  resourcePackage: "com.akshit.resources"  # Adjust to your API package
+  title: "New Waves Backend"
+  version: "1.0"
+  description: "This API provides access to New Waves Service."
+  contact: "Akshit Lalit"
+  contactEmail: "akshit.lalit@gmail.com"
+  license: "Apache 2.0"
+  licenseUrl: "https://www.apache.org/licenses/LICENSE-2.0.html"
+  prettyPrint: true
+  contextRoot: "/"
+  schemes: ["http", "https"]
+  enabled: ${IS_SWAGGER_ENABLED}
+  includeSwaggerResource: true
+  readAllResources: true
+
+database:
+  driverClass: org.postgresql.Driver
+  user: ${DB_USER}
+  password: ${DB_PASSWORD}
+  url: ${DB_URL}
+  properties:
+    charSet: UTF-8
+    hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate.show_sql: true
+    hibernate.format_sql: true
+    hibernate.hbm2ddl.auto: update
+  maxSize: 10
+  minSize: 2
+  initialSize: 2
+
+
