@@ -9,7 +9,7 @@ swagger:
   licenseUrl: "https://www.apache.org/licenses/LICENSE-2.0.html"
   prettyPrint: true
   contextRoot: "/"
-  schemes: ["http", "https"]
+  schemes: [ "http", "https" ]
   enabled: ${IS_SWAGGER_ENABLED}
   includeSwaggerResource: true
   readAllResources: true

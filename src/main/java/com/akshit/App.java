@@ -3,16 +3,11 @@ package com.akshit;
 import com.akshit.db.entities.StoredUser;
 import com.akshit.exceptions.NewWavesExceptionMapper;
 import com.akshit.filters.AuthFilter;
-import com.akshit.models.User;
-import com.akshit.services.GcpAccessTokenService;
 import com.akshit.utils.AppModule;
 import com.akshit.utils.MyGuiceOverrideBundle;
 import com.akshit.utils.TemplateHealthCheck;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.google.inject.Injector;
-import io.dropwizard.auth.AuthDynamicFeature;
-import io.dropwizard.auth.AuthValueFactoryProvider;
-import io.dropwizard.auth.oauth.OAuthCredentialAuthFilter;
 import io.dropwizard.core.Application;
 import io.dropwizard.core.setup.Bootstrap;
 import io.dropwizard.core.setup.Environment;
@@ -20,18 +15,17 @@ import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.federecio.dropwizard.swagger.SwaggerBundle;
 import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
-import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 import ru.vyarus.dropwizard.guice.GuiceBundle;
 
 public class App extends Application<AppConfiguration> {
 
-    private final SwaggerBundle<AppConfiguration> swaggerBundle = new SwaggerBundle<AppConfiguration>() {
+    private final SwaggerBundle<AppConfiguration> swaggerBundle = new SwaggerBundle<>() {
         @Override
         protected SwaggerBundleConfiguration getSwaggerBundleConfiguration(AppConfiguration configuration) {
             return configuration.getSwagger();
         }
     };
-    private final HibernateBundle<AppConfiguration> hibernate = new HibernateBundle<AppConfiguration>(
+    private final HibernateBundle<AppConfiguration> hibernate = new HibernateBundle<>(
             StoredUser.class) {
         @Override
         public DataSourceFactory getDataSourceFactory(AppConfiguration configuration) {
@@ -70,7 +64,6 @@ public class App extends Application<AppConfiguration> {
                 .register(new NewWavesExceptionMapper());
         environment.jersey()
                 .register(injector.getInstance(AuthFilter.class));
-
 
         TemplateHealthCheck healthCheck = new TemplateHealthCheck("%s");
         environment.healthChecks()

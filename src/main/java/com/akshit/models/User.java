@@ -2,7 +2,6 @@ package com.akshit.models;
 
 import com.akshit.enums.UserType;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import java.security.Principal;
 import java.time.LocalTime;
 import lombok.Data;
 

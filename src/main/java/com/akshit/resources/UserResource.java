@@ -1,6 +1,5 @@
 package com.akshit.resources;
 
-import com.akshit.annotations.BypassAuth;
 import com.akshit.db.entities.StoredUser;
 import com.akshit.models.User;
 import com.akshit.services.UserService;
@@ -9,8 +8,6 @@ import io.dropwizard.auth.Auth;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.annotation.security.PermitAll;
-import jakarta.annotation.security.RolesAllowed;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
