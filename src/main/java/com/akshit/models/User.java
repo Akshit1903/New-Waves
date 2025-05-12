@@ -2,15 +2,14 @@ package com.akshit.models;
 
 import com.akshit.enums.UserType;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-
-import java.sql.Time;
+import java.security.Principal;
 import java.time.LocalTime;
+import lombok.Data;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
+
     private String id;
 
     private String name;
@@ -22,4 +21,6 @@ public class User {
     private Integer monthlyLeaves;
 
     private LocalTime checkInTime;
+
+    private String email;
 }

@@ -4,17 +4,17 @@ import io.dropwizard.hibernate.AbstractDAO;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
-import org.hibernate.SessionFactory;
-
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Optional;
+import org.hibernate.SessionFactory;
 
 public abstract class BaseDAO<T> extends AbstractDAO<T> {
 
     private final Class<T> entityClass;
 
-    public BaseDAO(SessionFactory sessionFactory, Class<T> entityClass) {
+    public BaseDAO(SessionFactory sessionFactory,
+                   Class<T> entityClass) {
         super(sessionFactory);
         this.entityClass = entityClass;
     }
@@ -35,7 +35,8 @@ public abstract class BaseDAO<T> extends AbstractDAO<T> {
         return list(cq);
     }
 
-    public T updateEntity(String id, T entity) {
+    public T updateEntity(String id,
+                          T entity) {
         try {
             T existingEntity = get(id);
             if (existingEntity == null) {

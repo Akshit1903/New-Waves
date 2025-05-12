@@ -1,28 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.akshit</groupId>
     <artifactId>new-waves</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jetty.http.version>12.0.16</jetty.http.version>
-        <dropwizard.version>5.0.0-rc.1</dropwizard.version>
-    </properties>
 
     <build>
         <finalName>new-waves</finalName>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.6.0</version>
                 <configuration>
                     <createDependencyReducedPom>true</createDependencyReducedPom>
                     <filters>
@@ -38,25 +24,27 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
                         <configuration>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer
+                                implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer
+                                implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>com.akshit.App</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <phase>package</phase>
                     </execution>
                 </executions>
+                <groupId>org.apache.maven.plugins</groupId>
+                <version>3.6.0</version>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -64,77 +52,114 @@
                         </manifest>
                     </archive>
                 </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <version>3.2.0</version>
             </plugin>
         </plugins>
     </build>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>io.dropwizard</groupId>
-                <artifactId>dropwizard-bom</artifactId>
-                <version>${dropwizard.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
-            <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-core</artifactId>
+            <groupId>io.dropwizard</groupId>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.36</version>
+            <groupId>org.projectlombok</groupId>
             <scope>provided</scope>
+            <version>1.18.36</version>
         </dependency>
         <dependency>
-            <groupId>io.swagger.core.v3</groupId>
             <artifactId>swagger-jaxrs2-jakarta</artifactId>
-            <version>2.2.28</version>
+            <groupId>io.swagger.core.v3</groupId>
             <scope>runtime</scope>
+            <version>2.2.28</version>
         </dependency>
         <dependency>
-            <groupId>com.smoketurner</groupId>
             <artifactId>dropwizard-swagger</artifactId>
+            <groupId>com.smoketurner</groupId>
             <version>4.0.5-1</version>
         </dependency>
         <!-- Dropwizard JDBI (Optional: If using JDBI) -->
         <dependency>
-            <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-jdbi3</artifactId>
+            <groupId>io.dropwizard</groupId>
             <version>${dropwizard.version}</version>
         </dependency>
 
         <!-- Hibernate ORM for Dropwizard -->
         <dependency>
-            <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-hibernate</artifactId>
+            <groupId>io.dropwizard</groupId>
             <version>${dropwizard.version}</version>
         </dependency>
 
         <!-- PostgreSQL JDBC Driver -->
         <dependency>
-            <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+            <groupId>org.postgresql</groupId>
             <version>42.7.5</version>
         </dependency>
 
         <dependency>
-            <groupId>ru.vyarus</groupId>
             <artifactId>dropwizard-guicey</artifactId>
+            <groupId>ru.vyarus</groupId>
             <version>8.0.0-rc.2</version>
         </dependency>
 
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.13.0-M2</version>
+            <groupId>org.junit.jupiter</groupId>
             <scope>runtime</scope>
+            <version>5.13.0-M2</version>
         </dependency>
 
+        <dependency>
+            <artifactId>google-api-client</artifactId>
+            <groupId>com.google.api-client</groupId>
+            <version>1.35.2</version>
+        </dependency>
+        <dependency>
+            <artifactId>google-oauth-client</artifactId>
+            <groupId>com.google.oauth-client</groupId>
+            <version>1.39.0</version>
+        </dependency>
+        <dependency>
+            <artifactId>google-auth-library-oauth2-http</artifactId>
+            <groupId>com.google.auth</groupId>
+            <version>1.34.0</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>google-api-services-oauth2</artifactId>
+            <groupId>com.google.apis</groupId>
+            <version>v2-rev157-1.25.0</version>
+        </dependency>
+
+
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <artifactId>dropwizard-bom</artifactId>
+                <groupId>io.dropwizard</groupId>
+                <scope>import</scope>
+                <type>pom</type>
+                <version>${dropwizard.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <groupId>com.akshit</groupId>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <dropwizard.version>5.0.0-rc.1</dropwizard.version>
+        <jetty.http.version>12.0.16</jetty.http.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <version>1.0-SNAPSHOT</version>
 </project>
